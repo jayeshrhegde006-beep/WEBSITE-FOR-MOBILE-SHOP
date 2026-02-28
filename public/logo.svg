@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="500" height="500">
+  <defs>
+    <linearGradient id="orangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF9500"/>
+      <stop offset="100%" style="stop-color:#CC6000"/>
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="orangeGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- TRANSPARENT BACKGROUND (no rect) -->
+
+  <!-- ===== BACK HALF ORBITAL RING (behind phone) ===== -->
+  <ellipse cx="215" cy="252" rx="148" ry="50"
+           fill="none" stroke="#888888" stroke-width="5"
+           stroke-dasharray="215 235"
+           stroke-dashoffset="0"
+           transform="rotate(-18, 215, 252)"/>
+
+  <!-- ===== SMARTPHONE BODY (transparent fill) ===== -->
+  <rect x="148" y="110" width="140" height="238" rx="20" ry="20"
+        fill="white" fill-opacity="0.01" stroke="#FFFFFF" stroke-width="7"/>
+
+  <!-- Screen -->
+  <rect x="161" y="130" width="115" height="188" rx="6" ry="6"
+        fill="white" fill-opacity="0.04"/>
+
+  <!-- Home button -->
+  <circle cx="218" cy="335" r="9"
+        fill="none" stroke="#FFFFFF" stroke-width="5"/>
+
+  <!-- Speaker -->
+  <rect x="196" y="118" width="44" height="5" rx="2.5" fill="#FFFFFF"/>
+
+  <!-- ===== FRONT HALF ORBITAL RING (in front of phone) ===== -->
+  <ellipse cx="215" cy="252" rx="148" ry="50"
+           fill="none" stroke="#FFFFFF" stroke-width="6.5"
+           stroke-dasharray="235 215"
+           stroke-dashoffset="215"
+           transform="rotate(-18, 215, 252)"
+           filter="url(#softGlow)"/>
+
+  <!-- ===== LIGHTNING BOLT ===== -->
+  <polygon points="222,88 202,152 219,152 206,200 248,130 229,130 246,88"
+           fill="#FF8C00" filter="url(#orangeGlow)"/>
+
+  <!-- ===== TEXT: ALFA ===== -->
+  <text x="298" y="222"
+        font-family="'Arial Black', 'Franklin Gothic Heavy', Impact, sans-serif"
+        font-size="64" font-weight="900" letter-spacing="3"
+        fill="url(#orangeGrad)" filter="url(#softGlow)">ALFA</text>
+
+  <!-- ===== TEXT: CELL POINT ===== -->
+  <text x="305" y="260"
+        font-family="'Arial', 'Helvetica Neue', sans-serif"
+        font-size="21" font-weight="700" letter-spacing="8"
+        fill="#FF8C00">CELL POINT</text>
+
+</svg>
