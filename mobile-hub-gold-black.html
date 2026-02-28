@@ -1,0 +1,1699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobileHub - Premium Gold Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --black: #000000;
+            --rich-black: #0D0D0D;
+            --charcoal: #1A1A1A;
+            --gold: #D4AF37;
+            --bright-gold: #FFD700;
+            --dark-gold: #B8860B;
+            --cream: #FFF8E7;
+            --white: #FFFFFF;
+            --text-gray: #A0A0A0;
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #B8860B 100%);
+            --gradient-black: linear-gradient(135deg, #000000 0%, #1A1A1A 100%);
+            --shadow-gold: 0 4px 20px rgba(212, 175, 55, 0.3);
+            --shadow-gold-lg: 0 8px 40px rgba(212, 175, 55, 0.4);
+            --shadow-black: 0 4px 20px rgba(0, 0, 0, 0.5);
+            --glow-gold: 0 0 30px rgba(255, 215, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--black);
+            color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Luxury Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 215, 0, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Header Sticky */
+        .header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.8);
+            padding: 1rem 0;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 220px 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            box-shadow: var(--shadow-gold);
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            border-radius: 10px;
+            background: var(--gradient-gold);
+            opacity: 0.3;
+            filter: blur(8px);
+            z-index: -1;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+        }
+
+        .search-bar {
+            max-width: 600px;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 1rem 4rem 1rem 1.5rem;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            background: rgba(26, 26, 26, 0.6);
+            color: var(--cream);
+            transition: all 0.4s ease;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-gray);
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(26, 26, 26, 0.9);
+            box-shadow: var(--glow-gold);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gradient-gold);
+            border: none;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--glow-gold);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gold);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.15);
+            filter: drop-shadow(0 0 10px var(--gold));
+        }
+
+        .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--gradient-gold);
+            color: var(--black);
+            font-size: 0.7rem;
+            padding: 0.2rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-repair {
+            background: var(--gradient-gold);
+            color: var(--black);
+            border: none;
+            padding: 0.9rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-gold);
+            letter-spacing: 0.5px;
+        }
+
+        .btn-repair:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-gold);
+        }
+
+        /* Hero Section - Premium Split Layout */
+        .hero {
+            background: var(--gradient-black);
+            color: var(--cream);
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: rotateGlow 20s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: inline-block;
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            color: var(--text-gray);
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.5rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-left: 3px solid var(--gold);
+            padding-left: 1rem;
+            animation: fadeInUp 1s ease 0.3s backwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 3rem;
+            animation: fadeInUp 1s ease 0.5s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .btn {
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--black);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--glow-gold);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            border-color: var(--bright-gold);
+            color: var(--bright-gold);
+        }
+
+        .hero-phones {
+            position: relative;
+            height: 450px;
+            animation: fadeInRight 1.2s ease;
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(60px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .phone-card {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(13, 13, 13, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: var(--shadow-black);
+            transition: all 0.5s ease;
+        }
+
+        .phone-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            border-color: var(--gold);
+            box-shadow: var(--glow-gold);
+        }
+
+        .phone-card:nth-child(1) {
+            top: 0;
+            left: 0;
+            width: 300px;
+            animation: floatGold1 4s ease-in-out infinite;
+        }
+
+        .phone-card:nth-child(2) {
+            top: 100px;
+            right: 0;
+            width: 280px;
+            animation: floatGold2 4s ease-in-out infinite 0.7s;
+        }
+
+        .phone-card:nth-child(3) {
+            bottom: 0;
+            left: 80px;
+            width: 260px;
+            animation: floatGold1 4s ease-in-out infinite 1.4s;
+        }
+
+        @keyframes floatGold1 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes floatGold2 {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-25px); }
+        }
+
+        .phone-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 10px var(--gold));
+        }
+
+        .phone-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+            font-weight: 600;
+        }
+
+        .phone-card .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 6rem 2rem;
+            background: var(--rich-black);
+            position: relative;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--cream);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-top: 2rem;
+            font-weight: 300;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.6) 0%, rgba(13, 13, 13, 0.8) 100%);
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            text-align: center;
+            transition: all 0.5s ease;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: all 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold-lg);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            filter: grayscale(100%);
+            transition: all 0.4s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.25) rotate(10deg);
+            filter: grayscale(0%) drop-shadow(0 0 15px var(--gold));
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 0.7rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            font-weight: 300;
+        }
+
+        /* Featured Products */
+        .products-section {
+            padding: 6rem 2rem;
+            background: var(--black);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.9) 100%);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-gold-lg);
+            border-color: var(--gold);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            z-index: 10;
+            box-shadow: var(--shadow-gold);
+            letter-spacing: 0.5px;
+        }
+
+        .product-image {
+            height: 320px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(13, 13, 13, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 6rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+            transition: all 0.8s ease;
+        }
+
+        .product-card:hover .product-image::after {
+            left: 100%;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 0.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            color: var(--gold);
+            font-size: 1rem;
+            filter: drop-shadow(0 0 3px var(--gold));
+        }
+
+        .rating-count {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .current-price {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .original-price {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            text-decoration: line-through;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            background: var(--gradient-gold);
+            color: var(--black);
+            border: none;
+            padding: 1rem;
+            border-radius: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-add-cart:hover {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .btn-compare {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .btn-compare:hover {
+            background: var(--gradient-gold);
+            border-color: var(--gold);
+            color: var(--black);
+        }
+
+        /* Repair Booking Section */
+        .repair-section {
+            padding: 6rem 2rem;
+            background: var(--gradient-black);
+            color: var(--cream);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .repair-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .repair-panel {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(13, 13, 13, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 30px;
+            padding: 4rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-gold-lg);
+            position: relative;
+            z-index: 1;
+        }
+
+        .same-day-badge {
+            display: inline-block;
+            background: var(--gradient-gold);
+            color: var(--black);
+            padding: 0.7rem 1.8rem;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            box-shadow: var(--shadow-gold);
+            animation: shimmer 2s infinite;
+            letter-spacing: 0.5px;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateY(0); box-shadow: var(--shadow-gold); }
+            50% { transform: translateY(-5px); box-shadow: var(--glow-gold); }
+        }
+
+        .repair-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .repair-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 0 auto 1.5rem;
+            color: var(--black);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .repair-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .brand-logos {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .brand-logo {
+            width: 90px;
+            height: 90px;
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .brand-logo:hover {
+            background: var(--gradient-gold);
+            border-color: var(--gold);
+            transform: scale(1.15);
+            box-shadow: var(--glow-gold);
+        }
+
+        .problem-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .problem-option {
+            background: rgba(26, 26, 26, 0.6);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            padding: 1.2rem;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .problem-option:hover,
+        .problem-option.selected {
+            background: var(--gradient-gold);
+            border-color: var(--gold);
+            color: var(--black);
+            font-weight: 600;
+        }
+
+        /* Why Choose Us */
+        .features-section {
+            padding: 6rem 2rem;
+            background: var(--rich-black);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.5) 0%, rgba(13, 13, 13, 0.7) 100%);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .feature-item:hover {
+            transform: translateX(15px);
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(13, 13, 13, 0.95) 100%);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .feature-icon-box {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-gold);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .feature-text h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Flash Sale Banner */
+        .flash-sale {
+            background: var(--gradient-gold);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flash-sale::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(0, 0, 0, 0.05) 10px,
+                rgba(0, 0, 0, 0.05) 20px
+            );
+            animation: moveStripes 20s linear infinite;
+        }
+
+        @keyframes moveStripes {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .flash-sale h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flash-sale p {
+            font-size: 1.3rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .countdown-item {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            border: 2px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .countdown-item .number {
+            font-size: 3rem;
+            font-weight: 900;
+            display: block;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .countdown-item .label {
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Reviews Section */
+        .reviews-section {
+            padding: 6rem 2rem;
+            background: var(--black);
+        }
+
+        .reviews-slider {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.7) 0%, rgba(13, 13, 13, 0.9) 100%);
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: var(--shadow-black);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .review-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-gold);
+            border-color: var(--gold);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reviewer-photo {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: var(--shadow-gold);
+        }
+
+        .reviewer-info h4 {
+            font-size: 1.2rem;
+            color: var(--cream);
+            margin-bottom: 0.3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .review-stars {
+            color: var(--gold);
+            font-size: 1.1rem;
+            filter: drop-shadow(0 0 3px var(--gold));
+        }
+
+        .review-text {
+            color: var(--text-gray);
+            line-height: 1.8;
+            font-size: 1rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--gradient-black);
+            color: var(--cream);
+            padding: 5rem 2rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            font-weight: 700;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--gradient-gold);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            padding-top: 2.5rem;
+            text-align: center;
+            color: var(--text-gray);
+        }
+
+        /* WhatsApp Chat Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 35px;
+            right: 35px;
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: var(--black);
+            box-shadow: var(--shadow-gold-lg);
+            cursor: pointer;
+            z-index: 999;
+            transition: all 0.4s ease;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); box-shadow: var(--glow-gold); }
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.15);
+            box-shadow: var(--glow-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                grid-template-columns: auto 1fr;
+                gap: 1rem;
+            }
+
+            .search-bar {
+                display: none;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-phones {
+                height: 350px;
+            }
+
+            .phone-card {
+                width: 240px !important;
+            }
+
+            .section-title h2 {
+                font-size: 2.5rem;
+            }
+
+            .flash-sale h2 {
+                font-size: 2rem;
+            }
+
+            .countdown {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">👑</div>
+                <span class="logo-text">MobileHub</span>
+            </a>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="Search premium phones, accessories, repair services...">
+                <button class="search-btn">🔍</button>
+            </div>
+            
+            <div class="header-actions">
+                <button class="icon-btn">
+                    🛒
+                    <span class="badge">3</span>
+                </button>
+                <button class="icon-btn">👤</button>
+                <button class="btn-repair">🔧 Book Repair</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <p class="hero-tagline">Premium Mobile Excellence</p>
+                <h1>Buy Latest Phones & Get <span>Expert Repairs</span> in One Place</h1>
+                <p class="hero-subtitle">Buy • Repair • Upgrade</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary">🛒 Shop Collection</button>
+                    <button class="btn btn-secondary">🔧 Book Repair</button>
+                    <button class="btn btn-secondary">🔁 Trade-In</button>
+                </div>
+            </div>
+            
+            <div class="hero-phones">
+                <div class="phone-card">
+                    <div class="phone-icon">📱</div>
+                    <h3>iPhone 15 Pro Max</h3>
+                    <div class="price">₹1,49,999</div>
+                </div>
+                <div class="phone-card">
+                    <div class="phone-icon">📱</div>
+                    <h3>Samsung S24 Ultra</h3>
+                    <div class="price">₹1,29,999</div>
+                </div>
+                <div class="phone-card">
+                    <div class="phone-icon">📱</div>
+                    <h3>OnePlus 12 Pro</h3>
+                    <div class="price">₹64,999</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Premium Services</h2>
+                <p>Everything you need for your mobile lifestyle</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📱</div>
+                    <h3>New Smartphones</h3>
+                    <p>Latest flagship devices</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">♻️</div>
+                    <h3>Refurbished</h3>
+                    <p>Certified pre-owned</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Expert Repair</h3>
+                    <p>Professional technicians</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎧</div>
+                    <h3>Accessories</h3>
+                    <p>Premium quality</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⌚</div>
+                    <h3>Smart Watches</h3>
+                    <p>Luxury timepieces</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💳</div>
+                    <h3>EMI Options</h3>
+                    <p>Flexible financing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale -->
+    <section class="flash-sale">
+        <h2>⚡ Exclusive Flash Sale</h2>
+        <p>Limited time luxury deals - Don't miss out!</p>
+        <div class="countdown">
+            <div class="countdown-item">
+                <span class="number">02</span>
+                <span class="label">Hours</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number">15</span>
+                <span class="label">Minutes</span>
+            </div>
+            <div class="countdown-item">
+                <span class="number">22</span>
+                <span class="label">Seconds</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Collection</h2>
+                <p>Handpicked premium devices curated for excellence</p>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="discount-badge">25% OFF</span>
+                    <div class="product-image">📱</div>
+                    <div class="product-info">
+                        <div class="product-name">iPhone 15 Pro</div>
+                        <div class="rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-count">(234 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹1,12,499</span>
+                            <span class="original-price">₹1,49,999</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Add to Cart</button>
+                            <button class="btn-compare">⚖️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="discount-badge">15% OFF</span>
+                    <div class="product-image">📱</div>
+                    <div class="product-info">
+                        <div class="product-name">Samsung S24 Ultra</div>
+                        <div class="rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-count">(189 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹1,10,499</span>
+                            <span class="original-price">₹1,29,999</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Add to Cart</button>
+                            <button class="btn-compare">⚖️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="discount-badge">30% OFF</span>
+                    <div class="product-image">📱</div>
+                    <div class="product-info">
+                        <div class="product-name">OnePlus 12 Pro</div>
+                        <div class="rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-count">(156 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹45,499</span>
+                            <span class="original-price">₹64,999</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Add to Cart</button>
+                            <button class="btn-compare">⚖️</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <span class="discount-badge">20% OFF</span>
+                    <div class="product-image">🎧</div>
+                    <div class="product-info">
+                        <div class="product-name">AirPods Pro 2</div>
+                        <div class="rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-count">(412 reviews)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">₹20,799</span>
+                            <span class="original-price">₹25,999</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">Add to Cart</button>
+                            <button class="btn-compare">⚖️</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Repair Booking Section -->
+    <section class="repair-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Book Premium Repair</h2>
+                <p>Professional service in simple steps</p>
+            </div>
+            
+            <div class="repair-panel">
+                <span class="same-day-badge">⚡ Same Day Repair Available</span>
+                
+                <div class="repair-steps">
+                    <div class="repair-step">
+                        <div class="step-number">1</div>
+                        <h4>Select Brand</h4>
+                        <div class="brand-logos">
+                            <div class="brand-logo">🍎</div>
+                            <div class="brand-logo">📱</div>
+                            <div class="brand-logo">📲</div>
+                        </div>
+                    </div>
+                    
+                    <div class="repair-step">
+                        <div class="step-number">2</div>
+                        <h4>Select Problem</h4>
+                        <div class="problem-list">
+                            <div class="problem-option">🖥️ Screen</div>
+                            <div class="problem-option">🔋 Battery</div>
+                            <div class="problem-option">💧 Water</div>
+                            <div class="problem-option">⚙️ Software</div>
+                        </div>
+                    </div>
+                    
+                    <div class="repair-step">
+                        <div class="step-number">3</div>
+                        <h4>Pick Date & Time</h4>
+                        <input type="date" style="width: 100%; padding: 1rem; border-radius: 16px; border: 2px solid rgba(212, 175, 55, 0.3); background: rgba(26, 26, 26, 0.6); color: var(--cream); margin-top: 1rem; font-family: 'Poppins', sans-serif;">
+                    </div>
+                    
+                    <div class="repair-step">
+                        <div class="step-number">4</div>
+                        <h4>Confirm Booking</h4>
+                        <button class="btn btn-primary" style="margin-top: 1.5rem;">Book Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose MobileHub</h2>
+                <p>Premium quality, unmatched service</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-box">✓</div>
+                    <div class="feature-text">
+                        <h4>100% Genuine Products</h4>
+                        <p>Authorized dealer with authentic warranty</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-box">🔧</div>
+                    <div class="feature-text">
+                        <h4>Certified Technicians</h4>
+                        <p>Expert repairs by trained professionals</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-box">🛡️</div>
+                    <div class="feature-text">
+                        <h4>6 Months Warranty</h4>
+                        <p>Comprehensive coverage on all repairs</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-box">🚚</div>
+                    <div class="feature-text">
+                        <h4>Fast Delivery</h4>
+                        <p>Same day delivery in metro cities</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-box">💳</div>
+                    <div class="feature-text">
+                        <h4>Secure Payment</h4>
+                        <p>Multiple payment options available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Real reviews from satisfied clients</p>
+            </div>
+            
+            <div class="reviews-slider">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-photo">👨</div>
+                        <div class="reviewer-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"Exceptional service and premium quality! Got my iPhone 15 at an amazing price. The staff's expertise and attention to detail is unmatched. Highly recommend MobileHub!"</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-photo">👩</div>
+                        <div class="reviewer-info">
+                            <h4>Priya Patel</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"My phone screen was repaired in just 2 hours with genuine parts! Professional service that exceeds expectations. The luxury experience is worth every penny."</p>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-photo">👨</div>
+                        <div class="reviewer-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="review-stars">⭐⭐⭐⭐⭐</div>
+                        </div>
+                    </div>
+                    <p class="review-text">"The trade-in process was seamless and I got excellent value for my old device. The new Samsung S24 is incredible! MobileHub is the gold standard."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MobileHub</h3>
+                <p style="color: var(--text-gray); margin-bottom: 1.5rem; line-height: 1.8;">Your premier destination for luxury mobile devices and professional services. Experience excellence.</p>
+                <div class="social-icons">
+                    <div class="social-icon">📘</div>
+                    <div class="social-icon">📷</div>
+                    <div class="social-icon">🐦</div>
+                    <div class="social-icon">📺</div>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Premium Phones</a></li>
+                    <li><a href="#">Luxury Accessories</a></li>
+                    <li><a href="#">Repair Services</a></li>
+                    <li><a href="#">Trade-In Program</a></li>
+                    <li><a href="#">Track Order</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Policies</h3>
+                <ul>
+                    <li><a href="#">Repair Policy</a></li>
+                    <li><a href="#">Return Policy</a></li>
+                    <li><a href="#">Warranty Terms</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul>
+                    <li>📞 +91 98765 43210</li>
+                    <li>📧 luxury@mobilehub.com</li>
+                    <li>📍 Mumbai, Maharashtra, India</li>
+                    <li>🕒 Mon-Sat: 10AM - 9PM</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 MobileHub Premium. All rights reserved. | Crafted with Excellence</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float" onclick="alert('Premium WhatsApp support would open here!')">
+        💬
+    </div>
+
+    <script>
+        // Countdown Timer
+        setInterval(() => {
+            const countdownItems = document.querySelectorAll('.countdown-item .number');
+            countdownItems.forEach(item => {
+                let value = parseInt(item.textContent);
+                if (value > 0) {
+                    item.textContent = String(value - 1).padStart(2, '0');
+                }
+            });
+        }, 1000);
+
+        // Product Card Animations
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px)';
+            });
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(-12px)';
+            });
+        });
+
+        // Add to Cart Success
+        document.querySelectorAll('.btn-add-cart').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const originalText = this.textContent;
+                this.textContent = '✓ Added!';
+                this.style.background = 'linear-gradient(135deg, #10B981 0%, #059669 100%)';
+                setTimeout(() => {
+                    this.textContent = originalText;
+                    this.style.background = 'var(--gradient-gold)';
+                }, 2000);
+            });
+        });
+
+        // Problem Selection
+        document.querySelectorAll('.problem-option').forEach(option => {
+            option.addEventListener('click', function() {
+                document.querySelectorAll('.problem-option').forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                this.classList.add('selected');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
